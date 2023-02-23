@@ -142,5 +142,52 @@
         <br>
         <input type="submit" value="로그인">
     </form>
+
+    <style>
+        /* 
+            10. 마우스 반응 선택자 
+                1) :active      미우스를 누르고 있는 동안
+                2) :hover       마우스를 가져다 대는 동안
+        */
+        .link {
+            color: gray;
+            text-decoration: none;
+        }
+        .link:hover {
+            color: orange;
+        }
+        .link:active {
+            color: crimson;
+        }
+    </style>
+    <p>
+        <a class="link" href="javascript:void(0)">링크</a>
+    </p>
+
+    <style>
+        /* 
+            11. 상태 선택자
+                1) :focus       포커스를 가졌을 떄(선택했을 때)
+                2) :checked     체크했을 떄
+         */
+         #name:focus {
+            color: darkcyan;
+         }
+         .register_form input[name=gender]:checked + label {
+            font-weight: 900;
+         }
+    </style>
+    <form class="register_form">
+        <div>
+            <label for="name">이름</label>
+            <input type="text" id="name">
+        </div>
+        <div>
+            <input type="radio" name="gender" value="male" id="male">
+            <label for="male">남자</label>
+            <input type="radio" name="gender" value="female" id="female">
+            <label for="female">여자</label>
+        </div>
+    </form>
 </body>
 </html>
