@@ -7,11 +7,12 @@
     <title>Document</title>
 </head>
 <body>
+    
     <style>
-        /*  
+        /*
             float 속성
             1. HTML 요소들의 기본 배치(상->하, 좌->우)를 벗어날 때 사용한다.
-            2. 왼쪽이나 오른쪽 영역에 배치 시킬 수 있다.
+            2. 왼쪽이나 오른쪽 영역에 배치 시킬 수 있다.    
         */
         .wrap1 > div {
             width: 100px;
@@ -28,14 +29,14 @@
     <div class="wrap1">
         <div class="box1">BOX1</div>
         <div class="box2">BOX2</div>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam condimentum vel urna condimentum sodales. Donec velit tortor, ultricies at enim vel, sollicitudin bibendum velit. Pellentesque sed tempus turpis, sit amet ultrices arcu. Integer aliquet turpis eu dui auctor ullamcorper. Nullam eget metus vulputate, vestibulum justo efficitur, posuere felis. Proin at luctus ante. Etiam tempus suscipit lobortis. Ut faucibus in mauris dapibus fermentum. Curabitur porttitor euismod laoreet. Fusce arcu neque, bibendum vel augue eget, viverra facilisis justo.Duis ut varius felis. Etiam dignissim ante justo, a gravida justo laoreet in. Nulla id eleifend mauris. Phasellus accumsan mauris sed ultrices finibus. Duis lacinia massa id enim porta, vitae vehicula odio tincidunt. Phasellus hendrerit in ipsum quis scelerisque. Phasellus fringilla commodo quam, vel dignissim tortor finibus pellentesque. Proin fermentum fringilla elit sit amet malesuada. Quisque ullamcorper justo sit amet fringilla volutpat. Pellentesque sodales porttitor massa vel fermentum. Ut hendrerit lacus ut diam lobortis pellentesque. Nulla tempor fringilla molestie. Maecenas scelerisque, erat ac maximus venenatis, ex nibh malesuada ante, ut consequat metus erat a nulla. Ut rhoncus non ligula at sodales. Suspendisse hendrerit dui arcu, et luctus sapien vehicula non.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vitae tincidunt risus. Vivamus cursus lectus vel dapibus aliquam. Vivamus sapien odio, varius rutrum egestas at, aliquet sed lacus. Morbi sem orci, imperdiet et lectus non, pharetra mattis enim. Nunc sagittis aliquam nisi ac iaculis. Nullam at lacinia augue. Maecenas nec tincidunt neque. Mauris efficitur dui id metus ultricies volutpat. Proin consectetur placerat laoreet. Integer commodo consequat neque, sit amet fermentum sapien varius accumsan. Aliquam mollis pellentesque pharetra. Etiam eu ante vel turpis ultricies consectetur et id nulla. Suspendisse faucibus ultricies mi nec luctus. Donec pharetra cursus mauris, id commodo nibh pellentesque in.
     </div>
 
     <style>
-        /* 
+        /*
             overflow 속성
             1. 영역을 벗어난 컨텐츠에 적용되는 속성이다.
-            2. 영역을 벗어난 컨텐츠에 숨기거나 스크롤 처리한다.
+            2. 영역을 벗어난 컨텐츠를 숨기거나 스크롤 처리한다.
         */
         .wrap2 > div {
             width: 100px;
@@ -47,11 +48,11 @@
             overflow: hidden;
         }
         .wrap2 > .box2 {
-            overflow-x: scroll;     /* 가로 방향의 스크롤이 생긴다. */
-            overflow-y: scroll;     /* 세로 방향의 스크롤이 생긴다. */
+            overflow-x: scroll;  /* 가로 방향의 스크롤이 생긴다. */
+            overflow-y: scroll;  /* 세로 방향의 스크롤이 생긴다. */
         }
         .wrap2 > .box3 {
-            overflow: scroll;       /* 가로, 세로 방향의 스크롤이 생긴다. */
+            overflow: scroll;    /* 가로/세로 방향의 스크롤이 생긴다. */
         }
     </style>
     <div class="wrap2">
@@ -63,9 +64,9 @@
     <hr>
 
     <style>
-        /* 
+        /*
             블록을 좌우로 배치하는 방법 - 1 (one true layout)
-            1. 부모 요소를 overflow: hidden 처리한다.
+            1. 부모 요소를 overflow: hidden; 처리한다.
             2. 자식 요소를 float: left; (또는 float: right;) 처리한다.
         */
         .wrap3 {
@@ -79,28 +80,30 @@
         }
     </style>
     <div class="wrap3">
-        <div class="box1">BOX1</div>
-        <div class="box2">BOX2</div>
+        <div>BOX1</div>
+        <div>BOX2</div>
     </div>
 
-        <style>
-        /* 
+    <style>
+        /*
             블록을 좌우로 배치하는 방법 - 2
             1. 부모 요소를 display: flex; 처리한다.
             2. 그럼 끝.
         */
         div {
             box-sizing: border-box;
-
         }
         .wrap4 {
+
             display: flex;
-            flex-wrap: nowrap;      /* nowrap : 디폴트, 부모 영역으로 자식들을 모두 모으는 방식, wrap : 자식들의 크기를 유지하기 떄문에 부모 영역을 벗어날 수 있는 방식 */
-            flex-direction: row;    /* row, row-reverse, column, column-reverse */
-            justify-content: space-around;
+            flex-wrap: nowrap;               /* nowrap : 디폴트, 부모 영역으로 자식들을 모두 모으는 방식, wrap : 자식들의 크기를 유지하기 때문에 부모 영역을 벗어날 수 있는 방식 */
+            flex-direction: row;             /* row, row-reverse, column, column-reverse */
+            justify-content: space-between;  /* center, space-around, space-between */
+            
             width: 600px;
             height: 100px;
             background-color: antiquewhite;
+
         }
         .wrap4 > div {
             width: 100px;
@@ -108,12 +111,13 @@
             border: 1px solid gray;
         }
     </style>
-        <div class="wrap4">
+    <div class="wrap4">
         <div>BOX1</div>
         <div>BOX2</div>
         <div>BOX3</div>
         <div>BOX4</div>
         <div>BOX5</div>
     </div>
+
 </body>
 </html>
