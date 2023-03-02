@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            DOM(문서 객체 모델) 
+            1) 웹 페이지(HTML이나 XML 문서)의 구조, <style> 요소를 구조화 시켜 표현하여,
+               프로그래밍 언어(JavaScript)가 해당 웹 페이지(Document)에 접근하여 읽고 조작할 수 있도록 API를 제공하는 일종의 인터페이스이다.
+               * 쉽게 생각하면 JSON, XML을 프로그래밍 언어(Java)에서 제어했던 JSON 라이브러리와 같은 역할이라고 생각하면 된다.
+            2) Document 노드(문서 노드(최상위 노드))
+               > 
+               Element 노드(요소 노드(HTML 요소들 head, body, div 등))
+               > 
+               Attribute 노드(속성 노드(id, class, CSS style 시트 등))
+               Text 노드(텍스트 노드(최하위 노드, HTML 문서의 모든 텍스트))
+               * 노드(Node) : HTML 웹 페이지 구조 내 자식-부모, 형제관계 계층의 집합이다.
+            3) DOM의 데이터 타입(객체 구조)
+               1) 프로퍼티(property)            : DOM 객체의 멤버 변수이며, HTML 태그의 속성을 반영한다.
+               2) 메소드(method)                : DOM 객체의 멤버 함수이며, HTML 태그를 제어한다.
+               3) 컬렉션(collection)            : 정보를 집합적으로 표현하는 일종의 배열이다.
+               4) 이벤트 리스너(event listener) : HTML 태그에 작성된 이벤트 리스너(onclick, onchange 등)이다.
+               5) 스타일(style)                 : 이 프로퍼티를 통해 HTML 태그에 적용된 CSS 스타일 시트에 접근 가능하다.
+
+            innerHTML
+            1) 자식 요소의 Element Tags, 모든 띄어쓰기, 줄 바꿈이 그대로 출력된다.
+            2) 세 가지 중에서 가장 추천하지 않는 속성이다.
+            3) 프로퍼티의 값은 text와 HTML로 파싱 한 결과이며, 다른 속성에 비해 상대적으로 파싱이 느리다.
+            4) 하지만 파싱이 느리다는 점 보다 더 큰 문제는 보안 취약성 문제이며, XSS의 취약 사례로 언급이 되기도 했었다.
+               * XSS : 웹 사이트의 어드민(관리자)이 아닌 악의적인 목적을 가진 제 3자가 악성 스크립트를 삽입하여 의도하지 않은 명령을 실행시키거나,
+                       세션 등을 탈취할 수 있는 취약점이다.
+            
+            innerText
+            1) Element Tags 없이 텍스트만 나온다.
+            2) 만약 여러 번 중복되는 띄어쓰기가 존재한다면 딱 한 번만 나오며, 줄 바꿈은 따로 적용되지 않는다.
+            3) innerText는 IE8이하에서 지원되지 않았던 TextContent와 달리 IE엔진에 적합한 속성이기 때문에,
+               다른 브라우저가 아닌 IE를 중점적으로 고려하는 경우 TextContent를 대신하거나,
+               화면에 있는 텍스트 그대로 읽어오고 싶을 때 사용하기에 괜찮다.
+            
+            TextContent
+            1) Element Tags 없이 텍스트만 나온다.
+            2) 여기까지만 보면 innerText와 같아 보이지만, 여러 번 중복되는 띄어쓰기와 줄 바꿈 모두 그대로 적용이 된다.
+            3) 세 가지 속성 중 가장 사용을 추천하는 속성이며, 성능이나 보안적인 측면에서 가장 뛰어나다.
+
+            Attribute와 Property의 차이
+            - Attribute는 HTML 문서에서의 '정적'인 속성을 의미한다.(쉽게 말하자면 Java의 필드)
+            - Property는 이와 반대로 HTML DOM에의 '동적'인 속성을 뜻한다.(변수)
+            - className이 프로퍼티인 이유는 DOM 내에서 제어하는 class 속성과의 혼란을 방지하기 위해서이다.(class 속성의 변수)
+        */
+    </script>
+
+    <div id="box1"></div>
+    <script>
+        // 내부 텍스트 : textContent
+        var box1 = document.getElementById('box1');
+        box1.textContent = 'Hello World';
+    </script>
+
+    <div id="box2"><p>문단</p></div>
+    <script>
+        // textContent는 태그를 제외한 내부 텍스트만을 의미한다.
+        var box2 = document.getElementById('box2');
+        console.log(box2.textContent);
+    </script>
+
+    <div id="box3"></div>
+    <script>
+        var box3 = document.getElementById('box3');
+        box3.textContent = '<p>문단</p>';
+    </script>
+
+    <div id="box3"></div>
+    <script>
+        // 내부 HTML 요소 : innerHTML
+        var box3 = document.getElementById('box3');
+        box3.innerHTML = '<p>문단</p>';
+    </script>
+
+    <ul id="season"></ul>
+    <script>
+        // 내부 요소 추가를 위해서 + 연산자를 사용할 수 있다.                                                                   
+        var season = document.getElementById('season');
+        season.innerHTML += '<li>봄</li>';
+        season.innerHTML += '<li>여름</li>';
+        season.innerHTML += '<li>가을</li>';
+        season.innerHTML += '<li>겨울</li>';
+    </script>
+
+    <div id="box4">Hello World</div>
+    <script>
+        /*
+            CSS 적용하기
+            1. style 속성을 이용한다. 
+            2. inline 방식으로 CSS가 적용된다. (JavaScript를 이용한 CSS는 우선순위가 가장 높다.)
+            3. CSS 속성 적용 방식
+               1) 마침표 : CSS 속성에서 하이픈(-)을 제거한 뒤 CamelCase 방식의 이름을 사용한다.
+               2) 대괄호 : CSS 속성을 문자열 형식으로 그대로 사용한다.
+            4. 작성 예시
+               1) 마침표 : dom.style.fontSize = '12px';
+               20 대괄호 : dom.style['fontSize'] = '12px';
+        */
+        var box4 = document.getElementById('box4');
+        box4.style.color = '#efefef';
+        box4.style['color'] = '#030303';
+    </script>
+
+    <div id="box5" class="box5">Hello World</div>
+    <script>
+        /* 
+            attribute
+            1. 태그에 명시된 속성이다.
+            2. get/set 메소드를 이용해서 attribute를 사용한다.
+            3. 메소드
+               1) 속성 확인하기 : getAttribute('속성명')
+               2) 속성 변경하기 : setAttribute('속성명', '값')
+        */
+        var box5 = document.getElementById('box5');
+        console.log(box5.getAttribute('id'));
+        console.log(box5.getAttribute('class'));
+        box5.setAttribute('id', 'box5-1');
+        box5.setAttribute('class', 'box5-1');
+    </script>
+
+    <div id="box6" class="box6">Hello World</div>
+    <script>
+        /*
+            property
+            1. 갹체가 가지는 속성이다.
+            2. 마침표(.)를 이용해서 property를 사용한다.
+            3. property 확인하는 방법
+               개발자 도구 - Elements 탭 - Properties 탭
+        */
+       var box6 = document.getElementById('box6');
+       console.log(box6.id);
+       console.log(box6.className);
+       box6.id = 'box6-1';
+       box6.className = 'box6-1';
+    </script>
+    <div>
+        <input id="inp" type="text" value="Hello World" readonly="readonly">
+    </div>
+    <script>
+        var inp = document.getElementById('inp');
+        // inp.removeAttribute('readonly');
+        inp.readOnly = false;
+    </script>
+</body>
+</html>
