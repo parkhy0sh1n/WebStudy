@@ -25,6 +25,65 @@
         for(let i = 0; i < arr.length; i++) {
             console.log(i, arr[i]);
         }
+
+        // 배열 순회 -2
+        for(let i in arr) {
+            console.log(i, arr[i]);
+        }
+    </script>
+
+    <script>
+        // 빈 배열
+        var menu = [];
+
+        // 추가
+        // 1, push(요소)    : 마지막 인데스에 추가하기
+        // 2. unshift(요소) : 첫 번째 인덱스에 추가하기
+        menu.push('제육볶음'); 
+        menu.push('계란찜'); 
+        menu.unshift('된장찌개'); 
+        menu.unshift('김치찌개'); 
+
+        // 삭제
+        // 1. pop()   : 마지막 요소 삭제하기
+        // 2. shift() : 첫 번째 요소 삭제하기
+        menu.pop();
+        menu.shift();
+
+        // 수정(추가, 삭제, 수정을 모두 할 수 있다.)
+        // splice(변경을 시작할 인덱스, 삭제의 요소의 개수, [추가할 요소1, 추가할 요소2, ...])
+
+        // 인데스 2에 '계란찜' 추가하기
+        menu.splice(2, 0, '계란찜');
+
+        // 인덱스 2의 요소 삭제하기
+        menu.splice(0, 1);
+
+        // 인덱스 0부터 2개 요소를 '돈까스', '냉모밀'로 변경하기
+        menu.splice(0, 2, '돈까스', '냉모밀');
+
+        console.log(menu);
+    </script>
+
+    <div id="box1"></div>
+    <script>
+        var images = ['logo_coupang.png', 'logo_daum.png', 'logo_google.png', 'logo_naver.png'];
+        var str = '';
+        for(let i = 0; i < images.length; i++){
+            str += '<img src="../../images/' + images[i] + '" width="100px">';
+        }
+        document.getElementById('box1').innerHTML = str;
+    </script>
+
+    <div id="box2"></div>
+    <script>
+        var menu = ['메일', '카페', '블로그', '지식in', '쇼핑'];
+        var str = '<ul>';
+        for(let i = 0; i < menu.length; i++) {
+            str += '<li>' + menu[i] + '</li>';
+        }
+        str += '<ul>';
+        document.getElementById('box2').innerHTML = str;
     </script>
 </body>
 </html>
