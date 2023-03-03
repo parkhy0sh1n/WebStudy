@@ -24,6 +24,7 @@
         var average = (kor + eng + math) / 3;
 
         var grade;
+        /*
         if(average >= 90) {
             grade = 'A';
         } else if(average >= 80) {
@@ -34,6 +35,16 @@
             grade = 'D';
         } else {
             grade = 'F';
+        }
+        */
+
+        // JavaScript의 switch문은 비교 연산자 사용이 가능하다.
+        switch(true) {      // 각 case를 보시오.
+            case average >= 90: grade = 'A'; break;
+            case average >= 80: grade = 'B'; break;
+            case average >= 70: grade = 'C'; break;
+            case average >= 60: grade = 'D'; break;
+            default: grade = 'F';
         }
 
         document.getElementById('average').textContent = average;
