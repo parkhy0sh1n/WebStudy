@@ -32,7 +32,37 @@
     <script>
         
         // 3. css() == style
-        
+        $('#box3').css('color', '#c8c8c8')
+                  .css('font-size', '32px');
+        $('#box3').css({
+            'background-color': '#181818',
+            'text-align': 'center'
+        });
+
+    </script>
+
+    <div>
+        <img id="img">
+    </div>
+    <script>
+
+        // 4. attribute == attr()
+        console.log($('#img').attr('id'));
+        $('#img').attr('alt', '이미지');
+        $('#img').attr('src', '../../images/fruit1.jpg');
+        $('#img').attr('width', '200px');
+
+    </script>
+
+    <div>
+        <a id="link">링크</a>
+    </div>
+    <script>
+
+        // 5. property == prop()
+        console.log($('#link').prop('id'));
+        $('#link').prop('href', 'https://www.naver.com');
+        $('#link').prop('target', '_blank');
 
     </script>
 
