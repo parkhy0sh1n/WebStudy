@@ -10,7 +10,7 @@ $('#id').on('keyup', function() {
         $('#msg_id').text('아이디는 4자 이상입니다.').css('color', '#FF0000').css('font-size', '14px');
         ifPass = false;
     } else {
-        $('#msg_id').text('사용 가능한 아이디입니다.').css('color', '#0000FF').css('font-size', '14px');
+        $('#msg_id').text('정상적인 아이디입니다.').css('color', '#0000FF').css('font-size', '14px');
         idPass = true;
     }
     // idPass = idValue.length >= 4
